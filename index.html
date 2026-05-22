@@ -3,21 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Demba Thiam — Admin Sys & Réseaux</title>
+<title>Demba Thiam — Admin Sys, Réseaux & Cybersécurité</title>
 <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#020507;--bg2:#050d10;--bg3:#0a1a1f;--bg4:#0f2228;
+  /* Thème sombre noir et bleu marine */
+  --bg:#010409;--bg2:#0d1117;--bg3:#161b22;--bg4:#21262d;
   --g:#00ff88;--g2:#00e87a;--g3:rgba(0,255,136,0.08);
-  --b:#00cfff;--b2:rgba(0,207,255,0.08);
-  --r:#ff3e3e;
-  --t:#e0f5f0;--t2:#7ab8a8;--t3:#3a6658;
-  --bdr:#0d2e26;--bdr2:#0a2018;
+  --b:#58a6ff;--b2:rgba(88,166,255,0.08);
+  --r:#f85149;
+  --t:#c9d1d9;--t2:#8b949e;--t3:#484f58;
+  --bdr:#21262d;--bdr2:#30363d;
   --mono:'Share Tech Mono',monospace;
   --hd:'Rajdhani',sans-serif;
   --orb:'Orbitron',sans-serif;
-  --glow:0 0 20px rgba(0,255,136,0.2),0 0 60px rgba(0,255,136,0.05);
-  --glow2:0 0 20px rgba(0,207,255,0.2);
+  --glow:0 0 20px rgba(88,166,255,0.15),0 0 60px rgba(88,166,255,0.05);
+  --glow2:0 0 20px rgba(0,255,136,0.15);
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
@@ -28,21 +29,21 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 
 /* GRID */
 body::after{content:'';position:fixed;inset:0;
-  background-image:linear-gradient(rgba(0,255,136,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,136,.025) 1px,transparent 1px);
+  background-image:linear-gradient(rgba(88,166,255,.015) 1px,transparent 1px),linear-gradient(90deg,rgba(88,166,255,.015) 1px,transparent 1px);
   background-size:50px 50px;pointer-events:none;z-index:0;}
 
 /* CURSOR */
-#cur{width:6px;height:6px;background:var(--g);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;box-shadow:0 0 10px var(--g),0 0 20px var(--g);}
-#cur2{width:28px;height:28px;border:1px solid rgba(0,255,136,.5);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9998;transition:width .2s,height .2s;}
+#cur{width:6px;height:6px;background:var(--b);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;box-shadow:0 0 10px var(--b),0 0 20px var(--b);}
+#cur2{width:28px;height:28px;border:1px solid rgba(88,166,255,.5);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9998;transition:width .2s,height .2s;}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;height:58px;background:rgba(2,5,7,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--bdr);z-index:500;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;}
-.nav-brand{font-family:var(--orb);font-size:11px;color:var(--g);letter-spacing:.15em;display:flex;align-items:center;gap:10px;}
+nav{position:fixed;top:0;left:0;right:0;height:58px;background:rgba(1,4,9,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--bdr);z-index:500;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;}
+.nav-brand{font-family:var(--orb);font-size:11px;color:var(--b);letter-spacing:.15em;display:flex;align-items:center;gap:10px;}
 .nav-brand-dot{width:8px;height:8px;background:var(--g);border-radius:50%;box-shadow:0 0 8px var(--g);animation:pulse 2s infinite;}
 .nav-links{display:flex;gap:2.5rem;list-style:none;}
 .nav-links a{font-size:11px;color:var(--t2);text-decoration:none;letter-spacing:.12em;text-transform:uppercase;transition:color .2s;position:relative;padding-bottom:4px;}
-.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--g);transition:width .3s;}
-.nav-links a:hover{color:var(--g);}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--b);transition:width .3s;}
+.nav-links a:hover{color:var(--b);}
 .nav-links a:hover::after{width:100%;}
 .nav-right{font-size:10px;color:var(--t3);letter-spacing:.1em;border:1px solid var(--bdr);padding:5px 12px;border-radius:2px;}
 
@@ -52,17 +53,17 @@ nav{position:fixed;top:0;left:0;right:0;height:58px;background:rgba(2,5,7,.92);b
 .container{max-width:1100px;margin:0 auto;padding:0 2.5rem;}
 
 /* SECTION HEADER */
-.sec-eyebrow{font-size:10px;color:var(--g);letter-spacing:.25em;text-transform:uppercase;display:flex;align-items:center;gap:10px;margin-bottom:10px;}
-.sec-eyebrow::before{content:'';width:30px;height:1px;background:var(--g);}
+.sec-eyebrow{font-size:10px;color:var(--b);letter-spacing:.25em;text-transform:uppercase;display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.sec-eyebrow::before{content:'';width:30px;height:1px;background:var(--b);}
 .sec-eyebrow::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--bdr),transparent);}
 .sec-title{font-family:var(--orb);font-size:clamp(1.8rem,4vw,3rem);font-weight:700;color:var(--t);letter-spacing:.05em;margin-bottom:.5rem;line-height:1.1;}
-.sec-title span{color:var(--g);}
+.sec-title span{color:var(--b);}
 .sec-sub{font-size:12px;color:var(--t2);line-height:1.8;max-width:600px;margin-bottom:3rem;}
 
 /* HERO */
 #hero-page{display:flex;flex-direction:column;justify-content:center;min-height:100vh;padding-top:58px;position:relative;z-index:1;}
 .hero-bg-img{position:absolute;inset:0;z-index:-1;overflow:hidden;}
-.hero-bg-img img{width:100%;height:100%;object-fit:cover;opacity:.07;filter:grayscale(100%) contrast(1.2);}
+.hero-bg-img img{width:100%;height:100%;object-fit:cover;opacity:.05;filter:grayscale(100%) contrast(1.2);}
 .hero-bg-img::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--bg) 40%,transparent 100%);}
 
 .hero-inner{max-width:1100px;margin:0 auto;padding:0 2.5rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
@@ -74,48 +75,51 @@ nav{position:fixed;top:0;left:0;right:0;height:58px;background:rgba(2,5,7,.92);b
 .ttitle{font-size:10px;color:var(--t3);margin-left:auto;letter-spacing:.08em;}
 .tbody{padding:18px;font-size:12px;line-height:2.2;}
 .tl{display:flex;gap:8px;flex-wrap:wrap;}
-.tp{color:var(--g);white-space:nowrap;}
+.tp{color:var(--b);white-space:nowrap;}
 .tc{color:var(--t);}
 .to{color:var(--t2);}
 .to.hi{color:var(--b);}
 .to.ok{color:var(--g);}
-.tcur{display:inline-block;width:7px;height:13px;background:var(--g);animation:blink 1s infinite;vertical-align:middle;}
+.tcur{display:inline-block;width:7px;height:13px;background:var(--b);animation:blink 1s infinite;vertical-align:middle;}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
 
 .hero-content{}
 .hero-name{font-family:var(--orb);font-size:clamp(2.5rem,5vw,4.5rem);font-weight:900;line-height:.95;letter-spacing:.02em;margin-bottom:1rem;}
 .hero-name .n1{display:block;color:var(--t);}
-.hero-name .n2{display:block;color:var(--g);text-shadow:0 0 30px rgba(0,255,136,.4);}
-.hero-sub{font-size:12px;color:var(--t2);letter-spacing:.15em;text-transform:uppercase;margin-bottom:2rem;border-left:2px solid var(--g);padding-left:12px;}
+.hero-name .n2{display:block;color:var(--b);text-shadow:0 0 30px rgba(88,166,255,.4);}
+.hero-sub{font-size:12px;color:var(--t2);letter-spacing:.15em;text-transform:uppercase;margin-bottom:2rem;border-left:2px solid var(--b);padding-left:12px;}
 .hero-desc{font-size:13px;color:var(--t2);line-height:1.8;margin-bottom:2rem;}
 .hero-stats{display:flex;gap:2rem;margin-bottom:2.5rem;padding:1.5rem;background:var(--bg2);border:1px solid var(--bdr);border-radius:4px;}
 .hstat{text-align:center;}
-.hstat-n{font-family:var(--orb);font-size:1.8rem;font-weight:700;color:var(--g);}
+.hstat-n{font-family:var(--orb);font-size:1.8rem;font-weight:700;color:var(--b);}
 .hstat-l{font-size:10px;color:var(--t3);letter-spacing:.1em;text-transform:uppercase;margin-top:2px;}
 .hero-btns{display:flex;gap:12px;}
 .btn{font-family:var(--mono);font-size:11px;padding:11px 26px;letter-spacing:.12em;text-decoration:none;text-transform:uppercase;border-radius:2px;transition:all .2s;cursor:pointer;border:none;display:inline-block;}
-.btn-g{background:var(--g);color:var(--bg);font-weight:700;}
-.btn-g:hover{background:var(--g2);box-shadow:var(--glow);}
+.btn-g{background:var(--b);color:var(--bg);font-weight:700;}
+.btn-g:hover{background:var(--b);box-shadow:var(--glow);opacity:0.9;}
 .btn-o{background:transparent;border:1px solid var(--bdr);color:var(--t2);}
-.btn-o:hover{border-color:var(--g);color:var(--g);}
+.btn-o:hover{border-color:var(--b);color:var(--b);}
+.btn-s{background:var(--g);color:var(--bg);font-weight:700;}
+.btn-s:hover{box-shadow:var(--glow2);opacity:0.9;}
+
+/* BAGE ALTERNANCE */
+.alt-badge{background:rgba(0,255,136,0.1);border:1px solid var(--g);color:var(--g);padding:6px 12px;font-size:11px;display:inline-flex;align-items:center;gap:8px;margin-bottom:1.5rem;animation:pulseBdr 2s infinite;border-radius:2px;}
 
 /* CARDS GENERIQUES */
 .card{background:var(--bg2);border:1px solid var(--bdr2);border-radius:4px;transition:border-color .2s,box-shadow .2s,transform .2s;}
-.card:hover{border-color:var(--g);box-shadow:var(--glow);transform:translateY(-2px);}
-.card-img{width:100%;height:160px;object-fit:cover;display:block;filter:grayscale(40%) contrast(1.1);border-bottom:1px solid var(--bdr2);transition:filter .3s;}
-.card:hover .card-img{filter:grayscale(0%) contrast(1.1);}
+.card:hover{border-color:var(--b);box-shadow:var(--glow);transform:translateY(-2px);}
 
 /* ABOUT */
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
 .about-card{background:var(--bg2);border:1px solid var(--bdr2);border-radius:4px;overflow:hidden;transition:all .2s;}
-.about-card:hover{border-color:var(--g);box-shadow:var(--glow);}
+.about-card:hover{border-color:var(--b);box-shadow:var(--glow);}
 .about-card-img{width:100%;height:200px;object-fit:cover;filter:grayscale(50%) contrast(1.1) brightness(.8);display:block;border-bottom:1px solid var(--bdr2);transition:filter .3s;}
 .about-card:hover .about-card-img{filter:grayscale(10%) contrast(1.1) brightness(.9);}
 .about-card-body{padding:1.25rem;}
-.acard-label{font-size:10px;color:var(--g);letter-spacing:.15em;text-transform:uppercase;margin-bottom:6px;}
+.acard-label{font-size:10px;color:var(--b);letter-spacing:.15em;text-transform:uppercase;margin-bottom:6px;}
 .acard-title{font-family:var(--hd);font-size:18px;font-weight:700;color:var(--t);margin-bottom:10px;}
 .acard-text{font-size:12px;color:var(--t2);line-height:1.8;}
-.acard-text strong{color:var(--b);}
+.acard-text strong{color:var(--g); font-weight:600;}
 
 .timeline{margin-top:1.5rem;}
 .tl-item{display:flex;gap:14px;margin-bottom:1.5rem;position:relative;}
@@ -132,7 +136,7 @@ nav{position:fixed;top:0;left:0;right:0;height:58px;background:rgba(2,5,7,.92);b
 /* SKILLS */
 .skills-wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
 .skill-card{background:var(--bg2);border:1px solid var(--bdr2);border-radius:4px;overflow:hidden;transition:all .2s;}
-.skill-card:hover{border-color:var(--b);box-shadow:var(--glow2);}
+.skill-card:hover{border-color:var(--b);box-shadow:var(--glow);}
 .skill-card-img{width:100%;height:120px;object-fit:cover;filter:grayscale(60%) brightness(.7);display:block;border-bottom:1px solid var(--bdr2);transition:filter .3s;}
 .skill-card:hover .skill-card-img{filter:grayscale(10%) brightness(.9);}
 .skill-card-body{padding:1rem;}
@@ -140,83 +144,83 @@ nav{position:fixed;top:0;left:0;right:0;height:58px;background:rgba(2,5,7,.92);b
 .sklist{list-style:none;}
 .sklist li{font-size:11px;color:var(--t2);padding:4px 0;border-bottom:1px solid var(--bdr2);display:flex;align-items:center;gap:6px;}
 .sklist li:last-child{border-bottom:none;}
-.sklist li::before{content:'▸';color:var(--g);font-size:9px;flex-shrink:0;}
+.sklist li::before{content:'▸';color:var(--b);font-size:9px;flex-shrink:0;}
 
 /* PROG */
 .prog-wrap{background:var(--bg2);border:1px solid var(--bdr2);border-radius:4px;padding:1.5rem;margin-top:1rem;}
 .prog-label{font-size:10px;color:var(--t3);letter-spacing:.15em;text-transform:uppercase;margin-bottom:1rem;}
 .prog-item{margin-bottom:14px;}
 .prog-row{display:flex;justify-content:space-between;font-size:11px;color:var(--t2);margin-bottom:5px;}
-.prog-row span{color:var(--g);}
+.prog-row span{color:var(--b);}
 .pbar{height:2px;background:var(--bdr);border-radius:1px;overflow:hidden;}
-.pfill{height:100%;background:linear-gradient(90deg,var(--g),var(--b));border-radius:1px;}
+.pfill{height:100%;background:linear-gradient(90deg,var(--b),var(--g));border-radius:1px;}
 
 /* STAGES */
 .stage-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
-.stage-card{background:var(--bg2);border:1px solid var(--bdr2);border-radius:4px;overflow:hidden;transition:all .2s;}
-.stage-card:hover{border-color:var(--g);box-shadow:var(--glow);transform:translateY(-3px);}
+.stage-card{background:var(--bg2);border:1px solid var(--bdr2);border-radius:4px;overflow:hidden;transition:all .2s;display:flex;flex-direction:column;justify-content:space-between;}
+.stage-card:hover{border-color:var(--b);box-shadow:var(--glow);transform:translateY(-3px);}
 .stage-img{width:100%;height:180px;object-fit:cover;filter:grayscale(40%) brightness(.75) contrast(1.1);display:block;border-bottom:1px solid var(--bdr2);transition:filter .3s;}
 .stage-card:hover .stage-img{filter:grayscale(0%) brightness(.85) contrast(1.1);}
-.stage-body{padding:1.5rem;}
-.stage-num{font-size:10px;color:var(--g);letter-spacing:.2em;text-transform:uppercase;margin-bottom:4px;}
+.stage-body{padding:1.5rem;flex-grow:1;}
+.stage-num{font-size:10px;color:var(--b);letter-spacing:.2em;text-transform:uppercase;margin-bottom:4px;}
 .stage-co{font-family:var(--orb);font-size:1.3rem;font-weight:700;color:var(--t);margin-bottom:4px;}
 .stage-role{font-size:11px;color:var(--t2);margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--bdr2);}
 .stage-meta{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1rem;}
 .smeta{font-size:10px;color:var(--t3);display:flex;align-items:center;gap:4px;}
 .smeta strong{color:var(--t2);}
-.stage-missions{list-style:none;}
-.stage-missions li{font-size:11px;color:var(--t2);padding:5px 0;border-bottom:1px solid var(--bdr2);display:flex;gap:8px;}
+.stage-missions{list-style:none;margin-bottom:1.5rem;}
+.stage-missions li{font-size:11px;color:var(--t2);padding:5px 0;border-bottom:1px solid var(--bdr2);display:flex;gap:8px;line-height:1.5;}
 .stage-missions li:last-child{border-bottom:none;}
-.stage-missions li::before{content:'→';color:var(--g);flex-shrink:0;}
+.stage-missions li::before{content:'→';color:var(--b);flex-shrink:0;}
 
 /* PROCEDURES */
 .proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;}
 .proc-card{background:var(--bg2);border:1px solid var(--bdr2);border-radius:4px;overflow:hidden;cursor:pointer;transition:all .25s;position:relative;}
-.proc-card:hover{border-color:var(--g);box-shadow:var(--glow);transform:translateY(-4px);}
+.proc-card:hover{border-color:var(--b);box-shadow:var(--glow);transform:translateY(-4px);}
 .proc-card-img{width:100%;height:130px;object-fit:cover;filter:grayscale(50%) brightness(.65) contrast(1.2);display:block;transition:filter .3s;}
 .proc-card:hover .proc-card-img{filter:grayscale(0%) brightness(.8) contrast(1.1);}
 .proc-overlay{position:absolute;top:0;left:0;right:0;height:130px;background:linear-gradient(to bottom,transparent 40%,var(--bg2) 100%);}
 .proc-card-body{padding:1rem;}
-.proc-cat{font-size:9px;color:var(--g);letter-spacing:.2em;text-transform:uppercase;margin-bottom:4px;}
+.proc-cat{font-size:9px;color:var(--b);letter-spacing:.2em;text-transform:uppercase;margin-bottom:4px;}
 .proc-title{font-family:var(--hd);font-size:14px;font-weight:700;color:var(--t);margin-bottom:6px;}
 .proc-desc{font-size:10px;color:var(--t2);line-height:1.6;margin-bottom:10px;}
 .proc-tags{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:10px;}
 .ptag{font-size:9px;padding:2px 6px;border-radius:2px;letter-spacing:.05em;}
 .ptag.g{background:rgba(0,255,136,.08);color:var(--g);border:1px solid rgba(0,255,136,.2);}
-.ptag.b{background:rgba(0,207,255,.08);color:var(--b);border:1px solid rgba(0,207,255,.2);}
-.ptag.r{background:rgba(255,62,62,.08);color:var(--r);border:1px solid rgba(255,62,62,.2);}
-.proc-btn{font-size:10px;color:var(--g);border:1px solid rgba(0,255,136,.3);padding:5px 12px;border-radius:2px;background:rgba(0,255,136,.05);letter-spacing:.1em;display:inline-block;transition:all .2s;}
-.proc-card:hover .proc-btn{background:rgba(0,255,136,.12);border-color:var(--g);}
+.ptag.b{background:rgba(88,166,255,.08);color:var(--b);border:1px solid rgba(88,166,255,.2);}
+.ptag.r{background:rgba(248,81,73,.08);color:var(--r);border:1px solid rgba(248,81,73,.2);}
+.proc-btn{font-size:10px;color:var(--b);border:1px solid rgba(88,166,255,.3);padding:5px 12px;border-radius:2px;background:rgba(88,166,255,.05);letter-spacing:.1em;display:inline-block;transition:all .2s;}
+.proc-card:hover .proc-btn{background:rgba(88,166,255,.12);border-color:var(--b);}
 
 /* MODAL */
-.modal-overlay{position:fixed;inset:0;background:rgba(2,5,7,.95);z-index:800;display:none;align-items:center;justify-content:center;backdrop-filter:blur(10px);}
+.modal-overlay{position:fixed;inset:0;background:rgba(1,4,9,.95);z-index:800;display:none;align-items:center;justify-content:center;backdrop-filter:blur(10px);}
 .modal-overlay.open{display:flex;}
-.modal{background:var(--bg2);border:1px solid var(--g);border-radius:4px;max-width:700px;width:90%;max-height:85vh;overflow-y:auto;box-shadow:var(--glow);}
+.modal{background:var(--bg2);border:1px solid var(--bdr2);border-radius:4px;max-width:700px;width:90%;max-height:85vh;overflow-y:auto;box-shadow:var(--glow);}
 .modal-header{padding:1.5rem;border-bottom:1px solid var(--bdr);display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:var(--bg2);z-index:1;}
-.modal-header h3{font-family:var(--orb);font-size:16px;color:var(--g);}
+.modal-header h3{font-family:var(--orb);font-size:16px;color:var(--b);}
 .modal-close{font-size:20px;color:var(--t2);cursor:pointer;background:none;border:none;color:var(--t2);transition:color .2s;}
-.modal-close:hover{color:var(--g);}
+.modal-close:hover{color:var(--b);}
 .modal-img{width:100%;height:220px;object-fit:cover;filter:grayscale(20%) brightness(.8);border-bottom:1px solid var(--bdr);}
 .modal-body{padding:1.5rem;}
 .modal-section{margin-bottom:1.5rem;}
-.modal-section-title{font-size:10px;color:var(--g);letter-spacing:.2em;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.modal-section-title{font-size:10px;color:var(--b);letter-spacing:.2em;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
 .modal-section-title::after{content:'';flex:1;height:1px;background:var(--bdr);}
 .modal-text{font-size:12px;color:var(--t2);line-height:1.9;}
 .modal-steps{list-style:none;counter-reset:steps;}
 .modal-steps li{counter-increment:steps;font-size:12px;color:var(--t2);padding:8px 0;border-bottom:1px solid var(--bdr2);display:flex;gap:12px;align-items:flex-start;}
 .modal-steps li:last-child{border-bottom:none;}
-.modal-steps li::before{content:counter(steps,'0' decimal);color:var(--g);font-size:10px;background:rgba(0,255,136,.08);border:1px solid rgba(0,255,136,.2);border-radius:2px;padding:2px 6px;flex-shrink:0;margin-top:1px;}
-.modal-dl{display:inline-flex;align-items:center;gap:8px;font-size:11px;color:var(--bg);background:var(--g);padding:10px 20px;border-radius:2px;text-decoration:none;font-family:var(--mono);letter-spacing:.1em;margin-top:1rem;transition:all .2s;}
-.modal-dl:hover{background:var(--g2);box-shadow:var(--glow);}
+.modal-steps li::before{content:counter(steps,'0' decimal);color:var(--b);font-size:10px;background:rgba(88,166,255,.08);border:1px solid rgba(88,166,255,.2);border-radius:2px;padding:2px 6px;flex-shrink:0;margin-top:1px;}
+.modal-dl{display:inline-flex;align-items:center;gap:8px;font-size:11px;color:var(--bg);background:var(--b);padding:10px 20px;border-radius:2px;text-decoration:none;font-family:var(--mono);letter-spacing:.1em;margin-top:1rem;transition:all .2s;}
+.modal-dl:hover{opacity:0.9;box-shadow:var(--glow);}
 
 /* VEILLES */
 .veille-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
 .veille-card{background:var(--bg2);border:1px solid var(--bdr2);border-radius:4px;overflow:hidden;transition:all .2s;}
-.veille-card:hover{border-color:var(--g);box-shadow:var(--glow);}
+.veille-card:hover{border-color:var(--b);box-shadow:var(--glow);}
 .veille-img{width:100%;height:180px;object-fit:cover;filter:grayscale(40%) brightness(.7) contrast(1.1);display:block;border-bottom:1px solid var(--bdr2);transition:filter .3s;}
 .veille-card:hover .veille-img{filter:grayscale(0%) brightness(.8);}
 .veille-body{padding:1.5rem;}
-.vtype{font-size:10px;color:var(--g);letter-spacing:.2em;text-transform:uppercase;margin-bottom:6px;}
+.vtype{font-size:10px;color:var(--b);letter-spacing:.2em;text-transform:uppercase;margin-bottom:6px;}
 .vtitle{font-family:var(--hd);font-size:20px;font-weight:700;color:var(--t);margin-bottom:1rem;}
 .vpoints{list-style:none;}
 .vpoints li{font-size:11px;color:var(--t2);padding:6px 0;border-bottom:1px solid var(--bdr2);display:flex;gap:8px;line-height:1.5;}
@@ -231,47 +235,46 @@ nav{position:fixed;top:0;left:0;right:0;height:58px;background:rgba(2,5,7,.92);b
 .tcs-wrap{background:var(--bg2);border:1px solid var(--bdr2);border-radius:4px;overflow:hidden;}
 .tcs-head{background:var(--bg3);padding:1rem 1.5rem;border-bottom:1px solid var(--bdr);display:flex;justify-content:space-between;align-items:center;}
 .tcs-head-t{font-family:var(--hd);font-size:14px;font-weight:600;color:var(--t);}
-.tcs-count{font-size:10px;color:var(--g);border:1px solid rgba(0,255,136,.2);padding:3px 10px;border-radius:2px;}
+.tcs-count{font-size:10px;color:var(--b);border:1px solid rgba(88,166,255,.2);padding:3px 10px;border-radius:2px;}
 table{width:100%;border-collapse:collapse;}
 th{font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--t3);padding:10px 14px;text-align:left;border-bottom:1px solid var(--bdr);background:var(--bg3);font-weight:400;}
 td{font-size:11px;color:var(--t2);padding:9px 14px;border-bottom:1px solid var(--bdr2);vertical-align:middle;}
 tr:last-child td{border-bottom:none;}
-tr:hover td{background:rgba(0,255,136,.02);}
+tr:hover td{background:rgba(88,166,255,.01);}
 td:first-child{color:var(--t);font-size:12px;}
 .cdot{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;}
 .cdot.y{background:rgba(0,255,136,.12);color:var(--g);border:1px solid rgba(0,255,136,.25);}
 .cdot.n{background:var(--bg3);color:var(--t3);border:1px solid var(--bdr2);}
 .dbadge{font-size:9px;padding:2px 7px;border-radius:2px;background:var(--bg3);color:var(--t3);border:1px solid var(--bdr2);white-space:nowrap;}
 .ebadge{font-size:9px;padding:2px 7px;border-radius:2px;white-space:nowrap;}
-.ebadge.s{background:rgba(0,207,255,.07);color:var(--b);border:1px solid rgba(0,207,255,.2);}
+.ebadge.s{background:rgba(88,166,255,.07);color:var(--b);border:1px solid rgba(88,166,255,.2);}
 .ebadge.p{background:rgba(0,255,136,.07);color:var(--g);border:1px solid rgba(0,255,136,.2);}
 
 /* CONTACT */
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;}
 .contact-info-img{width:100%;height:300px;object-fit:cover;filter:grayscale(40%) brightness(.65) contrast(1.1);border-radius:4px;border:1px solid var(--bdr2);display:block;}
-.contact-right{}
 .c-title{font-family:var(--orb);font-size:1.8rem;font-weight:700;color:var(--t);margin-bottom:.5rem;line-height:1.2;}
-.c-title span{color:var(--g);}
+.c-title span{color:var(--b);}
 .c-desc{font-size:12px;color:var(--t2);line-height:1.8;margin-bottom:1.5rem;}
 .c-links{display:flex;flex-direction:column;gap:10px;margin-bottom:1.5rem;}
 .c-link{display:flex;align-items:center;gap:12px;font-size:12px;color:var(--t2);padding:12px 16px;background:var(--bg2);border:1px solid var(--bdr2);border-radius:4px;text-decoration:none;transition:all .2s;}
-.c-link:hover{border-color:var(--g);color:var(--g);}
-.c-link-icon{font-size:16px;color:var(--g);flex-shrink:0;}
-.c-form{}
+.c-link:hover{border-color:var(--b);color:var(--b);}
+.c-link-icon{font-size:16px;color:var(--b);flex-shrink:0;}
 .fg{margin-bottom:.75rem;}
 .fl{font-size:9px;color:var(--t3);letter-spacing:.15em;text-transform:uppercase;display:block;margin-bottom:5px;}
 .fi{width:100%;padding:9px 12px;background:var(--bg3);border:1px solid var(--bdr);border-radius:2px;color:var(--t);font-family:var(--mono);font-size:11px;outline:none;transition:border-color .2s;}
-.fi:focus{border-color:var(--g);}
+.fi:focus{border-color:var(--b);}
 textarea.fi{resize:vertical;min-height:80px;}
 
 /* FOOTER */
 footer{position:relative;z-index:1;border-top:1px solid var(--bdr2);padding:1.5rem 2.5rem;display:flex;justify-content:space-between;align-items:center;font-size:10px;color:var(--t3);max-width:1100px;margin:0 auto;}
-footer span{color:var(--g);}
+footer span{color:var(--b);}
 
 /* DIVIDER */
 .div{height:1px;background:linear-gradient(90deg,transparent,var(--bdr),transparent);margin:3rem 0;}
 
-@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(0,255,136,.4)}50%{box-shadow:0 0 0 6px rgba(0,255,136,0)}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(88,166,255,.4)}50%{box-shadow:0 0 0 6px rgba(88,166,255,0)}}
+@keyframes pulseBdr{0%,100%{border-color:rgba(0,255,136,0.3);background:rgba(0,255,136,0.03)}50%{border-color:rgba(0,255,136,1);background:rgba(0,255,136,0.1)}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 .fu{animation:fadeUp .5s ease forwards;opacity:0;}
 .d1{animation-delay:.1s}.d2{animation-delay:.2s}.d3{animation-delay:.3s}.d4{animation-delay:.4s}.d5{animation-delay:.5s}
@@ -287,69 +290,67 @@ footer span{color:var(--g);}
 .schema-wrap{background:var(--bg2);border:1px solid var(--bdr2);border-radius:4px;overflow:hidden;margin-bottom:2rem;}
 .schema-header{background:var(--bg3);padding:1rem 1.5rem;border-bottom:1px solid var(--bdr);display:flex;justify-content:space-between;align-items:center;}
 .schema-header-t{font-family:var(--hd);font-size:14px;font-weight:600;color:var(--t);}
-.schema-img{width:100%;display:block;border-bottom:1px solid var(--bdr2);}
+.schema-container{position:relative;width:100%;height:600px;background:#06090e;overflow:hidden;}
+.schema-iframe-pdf{width:100%;height:100%;border:none;}
 
 /* VEILLES NEW STYLES */
 .vtab-btn{font-family:var(--mono);font-size:11px;padding:9px 20px;letter-spacing:.1em;text-transform:uppercase;border-radius:2px;border:1px solid var(--bdr);background:var(--bg2);color:var(--t2);cursor:pointer;transition:all .2s;}
-.vtab-btn.active{background:var(--g);color:var(--bg);border-color:var(--g);font-weight:700;}
+.vtab-btn.active{background:var(--b);color:var(--bg);border-color:var(--b);font-weight:700;}
 .vtab{display:none;}.vtab.active{display:block;}
 .veille-full-card{background:var(--bg2);border:1px solid var(--bdr2);border-radius:4px;overflow:hidden;}
 .veille-full-header{position:relative;height:220px;overflow:hidden;}
 .veille-full-hero{width:100%;height:100%;object-fit:cover;filter:grayscale(30%) brightness(.6) contrast(1.1);display:block;}
-.veille-full-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(2,5,7,.95) 40%,rgba(2,5,7,.3));display:flex;flex-direction:column;justify-content:center;padding:2rem;}
+.veille-full-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(1,4,9,.95) 40%,rgba(1,4,9,.3));display:flex;flex-direction:column;justify-content:center;padding:2rem;}
 .vtitle-big{font-family:var(--orb);font-size:1.6rem;font-weight:700;color:var(--t);margin:6px 0;}
 .veille-full-sub{font-size:12px;color:var(--t2);}
 .veille-full-body{padding:2rem;}
 .veille-cols{display:grid;grid-template-columns:1fr 360px;gap:2rem;}
-.veille-col-main{}
-.veille-col-side{}
-.veille-section-title{font-size:10px;color:var(--g);letter-spacing:.2em;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.veille-section-title{font-size:10px;color:var(--b);letter-spacing:.2em;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
 .veille-section-title::after{content:'';flex:1;height:1px;background:var(--bdr);}
 .veille-txt{font-size:12px;color:var(--t2);line-height:1.9;}
 .veille-points-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 .vpoint-card{background:var(--bg3);border:1px solid var(--bdr2);border-radius:4px;padding:1rem;transition:border-color .2s;}
-.vpoint-card:hover{border-color:var(--g);}
+.vpoint-card:hover{border-color:var(--b);}
 .vpoint-icon{font-size:18px;margin-bottom:6px;}
 .vpoint-title{font-size:12px;font-weight:600;color:var(--t);margin-bottom:4px;}
 .vpoint-desc{font-size:11px;color:var(--t2);line-height:1.6;}
-.veille-highlight{display:flex;gap:12px;background:rgba(0,255,136,.05);border:1px solid rgba(0,255,136,.15);border-radius:4px;padding:1rem;font-size:12px;color:var(--t2);line-height:1.8;}
+.veille-highlight{display:flex;gap:12px;background:rgba(88,166,255,.05);border:1px solid rgba(88,166,255,.15);border-radius:4px;padding:1rem;font-size:12px;color:var(--t2);line-height:1.8;}
 .veille-highlight-icon{font-size:20px;flex-shrink:0;}
 .loi-cards{display:flex;flex-direction:column;gap:1rem;}
 .loi-card{background:var(--bg3);border:1px solid var(--bdr2);border-radius:4px;padding:1.25rem;transition:border-color .2s;}
-.loi-card:hover{border-color:var(--g);}
+.loi-card:hover{border-color:var(--b);}
 .loi-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
-.loi-sigle{font-family:var(--orb);font-size:14px;font-weight:700;color:var(--g);border:1px solid rgba(0,255,136,.3);padding:3px 10px;border-radius:2px;}
+.loi-sigle{font-family:var(--orb);font-size:14px;font-weight:700;color:var(--b);border:1px solid rgba(88,166,255,.3);padding:3px 10px;border-radius:2px;}
 .loi-date{font-size:10px;color:var(--t3);}
 .loi-titre{font-size:12px;color:var(--t);font-weight:600;margin-bottom:10px;}
 .loi-body{margin-bottom:10px;}
 .loi-point{font-size:11px;color:var(--t2);padding:4px 0;line-height:1.6;}
-.loi-arrow{color:var(--g);margin-right:6px;}
-.loi-impact{font-size:11px;background:rgba(0,207,255,.06);border:1px solid rgba(0,207,255,.15);border-radius:3px;padding:8px 10px;color:var(--b);}
+.loi-arrow{color:var(--b);margin-right:6px;}
+.loi-impact{font-size:11px;background:rgba(0,255,136,.06);border:1px solid rgba(0,255,136,.15);border-radius:3px;padding:8px 10px;color:var(--g);}
 .loi-impact span{font-weight:600;margin-right:4px;}
 .rss-block{background:var(--bg3);border:1px solid var(--bdr2);border-radius:4px;overflow:hidden;margin-bottom:1rem;}
 .rss-header{background:var(--bg);padding:10px 14px;border-bottom:1px solid var(--bdr2);display:flex;align-items:center;gap:8px;font-size:11px;color:var(--t2);}
-.rss-dot{width:8px;height:8px;background:var(--g);border-radius:50%;box-shadow:0 0 8px var(--g);animation:pulse 2s infinite;flex-shrink:0;}
-.rss-refresh{margin-left:auto;background:none;border:1px solid var(--bdr);border-radius:2px;color:var(--g);font-size:14px;cursor:pointer;padding:2px 8px;transition:all .2s;}
-.rss-refresh:hover{background:rgba(0,255,136,.1);}
+.rss-dot{width:8px;height:8px;background:var(--b);border-radius:50%;box-shadow:0 0 8px var(--b);animation:pulse 2s infinite;flex-shrink:0;}
+.rss-refresh{margin-left:auto;background:none;border:1px solid var(--bdr);border-radius:2px;color:var(--b);font-size:14px;cursor:pointer;padding:2px 8px;transition:all .2s;}
+.rss-refresh:hover{background:rgba(88,166,255,.1);}
 .rss-label{font-size:9px;color:var(--t3);padding:6px 14px;border-bottom:1px solid var(--bdr2);letter-spacing:.1em;}
 .rss-feed{max-height:320px;overflow-y:auto;}
-.rss-feed::-webkit-scrollbar{width:3px;}.rss-feed::-webkit-scrollbar-track{background:var(--bg3);}.rss-feed::-webkit-scrollbar-thumb{background:var(--g);border-radius:2px;}
+.rss-feed::-webkit-scrollbar{width:3px;}.rss-feed::-webkit-scrollbar-track{background:var(--bg3);}.rss-feed::-webkit-scrollbar-thumb{background:var(--b);border-radius:2px;}
 .rss-loading{padding:1.5rem;text-align:center;font-size:11px;color:var(--t3);display:flex;align-items:center;justify-content:center;gap:8px;}
-.rss-spinner{width:14px;height:14px;border:2px solid var(--bdr);border-top-color:var(--g);border-radius:50%;animation:spin .8s linear infinite;}
+.rss-spinner{width:14px;height:14px;border:2px solid var(--bdr);border-top-color:var(--b);border-radius:50%;animation:spin .8s linear infinite;}
 @keyframes spin{to{transform:rotate(360deg)}}
 .rss-item{padding:10px 14px;border-bottom:1px solid var(--bdr2);transition:background .2s;cursor:pointer;}
 .rss-item:last-child{border-bottom:none;}
-.rss-item:hover{background:rgba(0,255,136,.03);}
+.rss-item:hover{background:rgba(88,166,255,.03);}
 .rss-item-title{font-size:11px;color:var(--t);line-height:1.5;margin-bottom:4px;}
 .rss-item-meta{display:flex;gap:8px;align-items:center;}
-.rss-item-source{font-size:9px;color:var(--g);letter-spacing:.08em;}
+.rss-item-source{font-size:9px;color:var(--b);letter-spacing:.08em;}
 .rss-item-date{font-size:9px;color:var(--t3);}
-.rss-error{padding:1rem;font-size:11px;color:var(--r);text-align:center;}
 .veille-sources-block{background:var(--bg3);border:1px solid var(--bdr2);border-radius:4px;padding:1rem;}
 .vsrc-lbl2{font-size:9px;color:var(--t3);letter-spacing:.15em;text-transform:uppercase;margin-bottom:10px;}
 .vsrc-list{display:flex;flex-direction:column;gap:6px;}
 .vsrc-item{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--t2);text-decoration:none;padding:6px 8px;border-radius:2px;border:1px solid var(--bdr2);background:var(--bg2);transition:all .2s;}
-.vsrc-item:hover{border-color:var(--g);color:var(--g);}
+.vsrc-item:hover{border-color:var(--b);color:var(--b);}
 .vsrc-ico{font-size:14px;}
 
 /* TCS PDF */
@@ -357,7 +358,7 @@ footer span{color:var(--g);}
 .tcs-pdf-header{background:var(--bg3);padding:1rem 1.5rem;border-bottom:1px solid var(--bdr);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
 .tcs-iframe{width:100%;height:700px;border:none;display:block;background:white;}
 
-@media(max-width:768px){.veille-cols{grid-template-columns:1fr;}.veille-points-grid{grid-template-columns:1fr;}}
+@media(max-width:768px){.veille-cols{grid-template-columns:1fr;}.veille-points-grid{grid-template-columns:1fr;}.schema-container{height:400px;}}
 </style>
 </head>
 <body>
@@ -365,15 +366,14 @@ footer span{color:var(--g);}
 <div id="cur"></div>
 <div id="cur2"></div>
 
-<!-- NAV -->
 <nav>
   <div class="nav-brand"><div class="nav-brand-dot"></div>DEMBA THIAM</div>
   <ul class="nav-links">
     <li><a href="#" onclick="showPage('home')">Accueil</a></li>
     <li><a href="#" onclick="showPage('about')">À propos</a></li>
     <li><a href="#" onclick="showPage('skills')">Compétences</a></li>
-    <li><a href="#" onclick="showPage('stages')">Stages</a></li>
-    <li><a href="#" onclick="showPage('projets')">Projets</a></li>
+    <li><a href="#" onclick="showPage('stages')">Stages & Expériences</a></li>
+    <li><a href="#" onclick="showPage('projets')">Schéma & Procédures</a></li>
     <li><a href="#" onclick="showPage('veilles')">Veilles</a></li>
     <li><a href="#" onclick="showPage('tcs')">TCS</a></li>
     <li><a href="#" onclick="showPage('contact')">Contact</a></li>
@@ -381,7 +381,6 @@ footer span{color:var(--g);}
   <div class="nav-right">BTS SIO · SISR · 2024–2026</div>
 </nav>
 
-<!-- ===== HERO ===== -->
 <div id="page-home" class="page active">
 <div id="hero-page">
   <div class="hero-bg-img">
@@ -389,36 +388,36 @@ footer span{color:var(--g);}
   </div>
   <div class="hero-inner">
     <div>
+      <div class="alt-badge"><span class="nav-brand-dot"></span> EN RECHERCHE ACTIVE D'ALTERNANCE (BAC+3)</div>
       <div class="sec-eyebrow fu d1">Portfolio BTS SIO SISR</div>
       <h1 class="hero-name fu d2"><span class="n1">Demba</span><span class="n2">Thiam</span></h1>
-      <p class="hero-sub fu d3">Futur Administrateur Systemes et Reseaux</p>
-      <p class="hero-desc fu d4">Etudiant en 2eme annee de BTS SIO option SISR a l'IFC Marseille. Passionne par l'architecture des réseaux, la virtualisation et la cybersécurité.</p>
+      <p class="hero-sub fu d3">Futur Spécialiste Système, Réseau et Cybersécurité</p>
+      <p class="hero-desc fu d4">Étudiant en 2ème année de BTS SIO option SISR à l'IFC Marseille. Passionné par l'architecture des infrastructures critiques, la sécurisation des flux et la gouvernance des SI.</p>
       <div class="hero-stats fu d4">
         <div class="hstat"><div class="hstat-n">16</div><div class="hstat-l">Réalisations</div></div>
-        <div class="hstat"><div class="hstat-n">2</div><div class="hstat-l">Stages</div></div>
-        <div class="hstat"><div class="hstat-n">7</div><div class="hstat-l">VMs</div></div>
+        <div class="hstat"><div class="hstat-n">2</div><div class="hstat-l">Stages Pro</div></div>
+        <div class="hstat"><div class="hstat-n">7</div><div class="hstat-l">VMs Actives</div></div>
         <div class="hstat"><div class="hstat-n">8</div><div class="hstat-l">Procédures</div></div>
       </div>
       <div class="hero-btns fu d5">
-        <a href="#" onclick="showPage('projets')" class="btn btn-g">Voir les projets</a>
+        <a href="#" onclick="showPage('stages')" class="btn btn-g">Découvrir mes projets</a>
         <a href="#" onclick="showPage('contact')" class="btn btn-o">Me contacter</a>
       </div>
     </div>
     <div class="fu d3">
       <div class="hero-terminal">
-        <div class="tbar"><div class="td r"></div><div class="td y"></div><div class="td g2"></div><div class="ttitle">terminal — bash</div></div>
+        <div class="tbar"><div class="td r"></div><div class="td y"></div><div class="td g2"></div><div class="ttitle">sysadmin@infra-core:~</div></div>
         <div class="tbody">
-          <div class="tl"><span class="tp">demba@ifc:~$</span><span class="tc">&nbsp;whoami</span></div>
-          <div class="tl"><span class="to hi">Demba Thiam — BTS SIO SISR</span></div>
-          <div class="tl"><span class="tp">demba@ifc:~$</span><span class="tc">&nbsp;uname -a</span></div>
-          <div class="tl"><span class="to">IFC Marseille · Promo 2026</span></div>
-          <div class="tl"><span class="tp">demba@ifc:~$</span><span class="tc">&nbsp;ping -c1 pfSense</span></div>
-          <div class="tl"><span class="to ok">64 bytes from 10.1.1.2: icmp_seq=1 ttl=64</span></div>
-          <div class="tl"><span class="tp">demba@ifc:~$</span><span class="tc">&nbsp;ls /srv/vms/</span></div>
-          <div class="tl"><span class="to" style="color:#ffbd2e">AD1/ AD2/ GLPI/ Zabbix/ XiVO/ Artica/ Unifi/</span></div>
-          <div class="tl"><span class="tp">demba@ifc:~$</span><span class="tc">&nbsp;systemctl status proxmox</span></div>
-          <div class="tl"><span class="to ok">● proxmox.service — Active (running)</span></div>
-          <div class="tl"><span class="tp">demba@ifc:~$</span><span class="tc">&nbsp;<span class="tcur"></span></span></div>
+          <div class="tl"><span class="tp">demba@infra:~$</span><span class="tc">&nbsp;uname -a</span></div>
+          <div class="tl"><span class="to">Linux IFC-Marseille Promo-2026 x86_64 GNU/Linux</span></div>
+          <div class="tl"><span class="tp">demba@infra:~$</span><span class="tc">&nbsp;ping -c1 pfSense.local</span></div>
+          <div class="tl"><span class="to ok">64 bytes from 10.1.1.2: icmp_seq=1 ttl=64 time=0.42ms</span></div>
+          <div class="tl"><span class="tp">demba@infra:~$</span><span class="tc">&nbsp;systemctl status network-core</span></div>
+          <div class="tl"><span class="to ok">● network-core.service - Core Infrastructure Routing Matrix</span></div>
+          <div class="tl"><span class="to ok">&nbsp;&nbsp;&nbsp;Active: active (running) since Session-2024</span></div>
+          <div class="tl"><span class="tp">demba@infra:~$</span><span class="tc">&nbsp;ls /srv/vms/ deployment/</span></div>
+          <div class="tl"><span class="to" style="color:#febc2e">AD-DS-01/ AD-DS-02/ GLPI-ITSM/ Zabbix-Server/ Proxy-Artica/ XiVO-VoIP/</span></div>
+          <div class="tl"><span class="tp">demba@infra:~$</span><span class="tc">&nbsp;<span class="tcur"></span></span></div>
         </div>
       </div>
     </div>
@@ -426,12 +425,18 @@ footer span{color:var(--g);}
 </div>
 </div>
 
-<!-- ===== À PROPOS ===== -->
 <div id="page-about" class="page">
 <div class="container">
   <div class="sec-eyebrow">01 · À propos</div>
-  <h2 class="sec-title">Mon <span>parcours</span></h2>
-  <p class="sec-sub">Passionne par l'architecture des systèmes, l'administration des réseaux et la cybersécurité. Chaque ligne de config est une opportunité d'apprendre.</p>
+  <h2 class="sec-title">Objectif <span>Alternance</span></h2>
+  <p class="sec-sub">Actuellement en validation de mon BTS SIO SISR, je projette d'intégrer un cursus de niveau Bac+3 d'Administrateur Système, Réseau et Cybersécurité.</p>
+
+  <div style="background: rgba(0, 255, 136, 0.04); border: 1px solid var(--g); border-radius: 4px; padding: 1.5rem; margin-bottom: 2rem;">
+    <h3 style="font-family: var(--orb); color: var(--g); font-size: 14px; letter-spacing: 0.1em; margin-bottom: 0.5rem;">🎯 RECHERCHE D'ALTERNANCE — RENTRÉE 2026</h3>
+    <p style="font-size: 13px; line-height: 1.8; color: var(--t);">
+      À la recherche d'une entreprise d'accueil pour préparer mon <strong>Bachelor / Licence Professionnelle en Administration Systèmes, Réseaux et Sécurité</strong>. Rythme souhaité selon calendrier de formation. Mobile sur Marseille et ses alentours. Prêt à apporter mes compétences opérationnelles en virtualisation, gestion de pare-feu et support utilisateur.
+    </p>
+  </div>
 
   <div class="about-grid">
     <div class="about-card">
@@ -439,15 +444,15 @@ footer span{color:var(--g);}
       <div class="about-card-body">
         <div class="acard-label">Qui suis-je</div>
         <div class="acard-title">Demba Thiam</div>
-        <div class="acard-text">Étudiant en 2ème année de <strong>BTS SIO option SISR</strong> à l'IFC Marseille. Spécialisé dans les infrastructures réseau, la virtualisation et la <strong>cybersécurité</strong>. Rigoureux, motivé, toujours en veille sur les nouvelles technologies.</div>
+        <div class="acard-text">Étudiant en 2ème année à l'IFC Marseille. Mon profil combine la rigueur analytique héritée d'un parcours scientifique et des compétences concrètes acquises lors de mes déploiements d'infrastructures. Passionné par l'écosystème open-source et la <strong>sécurisation périmétrique</strong>.</div>
       </div>
     </div>
     <div class="about-card">
       <img class="about-card-img" src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80" alt="objectif">
       <div class="about-card-body">
-        <div class="acard-label">Mon objectif</div>
-        <div class="acard-title">Administrateur Sys & Réseaux</div>
-        <div class="acard-text">Poursuivre vers un <strong>Bachelor ou Licence Pro</strong> en Administration Systèmes, Réseaux et <strong>Cloud Computing</strong>. Ambition : évoluer vers un poste d'admin réseau ou se spécialiser en cybersécurité avec certifications <strong>AWS / Azure</strong>.</div>
+        <div class="acard-label">Compétences cibles</div>
+        <div class="acard-title">Système, Réseau & SecOps</div>
+        <div class="acard-text">Mon but est de consolider ma maîtrise des environnements hybrides (On-Premise / Cloud), d'automatiser les déploiements (Ansible/Docker) et d'approfondir la mise en conformité réglementaire (NIS 2, directives ANSSI).</div>
       </div>
     </div>
   </div>
@@ -463,23 +468,22 @@ footer span{color:var(--g);}
       </div>
       <div class="tl-item">
         <div class="tl-dot b"></div>
-        <div><div class="tl-date">AIX-MARSEILLE · UNIVERSITÉ</div><div class="tl-ttl">Licence 1 Portail René Descartes</div><div class="tl-sub">Bases informatiques solides. Orientation développement web ne correspondant pas à ma vocation → décision de réorientation vers SISR.</div></div>
+        <div><div class="tl-date">AIX-MARSEILLE UNIVERSITÉ</div><div class="tl-ttl">Licence 1 Portail René Descartes</div><div class="tl-sub">Apprentissage de la logique algorithmique et de la structure des ordinateurs. Découverte d'une préférence marquée pour les couches d'infrastructure plutôt que le développement pur, initiant ma réorientation vers le parcours SISR.</div></div>
       </div>
       <div class="tl-item">
         <div class="tl-dot g"></div>
-        <div><div class="tl-date">2024 — 2026 · IFC MARSEILLE</div><div class="tl-ttl">BTS SIO option SISR</div><div class="tl-sub">16 réalisations · 2 stages · Spécialisation infrastructure, réseaux, virtualisation, cybersécurité</div></div>
+        <div><div class="tl-date">2024 — 2026 · IFC MARSEILLE</div><div class="tl-ttl">BTS SIO option SISR</div><div class="tl-sub">16 réalisations de haut niveau validées, administration active d'un lab de virtualisation sous Proxmox VE, et immersion au sein de deux structures professionnelles d'infogérance et de maintenance.</div></div>
       </div>
     </div>
   </div>
 </div>
 </div>
 
-<!-- ===== COMPÉTENCES ===== -->
 <div id="page-skills" class="page">
 <div class="container">
   <div class="sec-eyebrow">02 · Compétences</div>
   <h2 class="sec-title">Stack <span>technique</span></h2>
-  <p class="sec-sub">Compétences acquises en formation et validées sur le terrain lors des deux stages professionnels.</p>
+  <p class="sec-sub">Savoir-faire validés en environnement de production et de laboratoire.</p>
 
   <div class="skills-wrap">
     <div class="skill-card">
@@ -580,88 +584,131 @@ footer span{color:var(--g);}
 </div>
 </div>
 
-<!-- ===== STAGES ===== -->
 <div id="page-stages" class="page">
 <div class="container">
   <div class="sec-eyebrow">03 · Expériences</div>
-  <h2 class="sec-title">Mes <span>stages</span></h2>
-  <p class="sec-sub">Deux immersions professionnelles qui ont ancré mes compétences dans la réalité du terrain.</p>
+  <h2 class="sec-title">Immersion <span>Professionnelle</span></h2>
+  <p class="sec-sub">Détails de mes interventions et projets menés en entreprise au cours de mes deux stages de BTS.</p>
 
   <div class="stage-grid">
     <div class="stage-card">
-      <img class="stage-img" src="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?w=800&q=80" alt="NetBFRS">
-      <div class="stage-body">
-        <div class="stage-num">STAGE 01 · PREMIÈRE ANNÉE</div>
-        <div class="stage-co">NetBFRS</div>
-        <div class="stage-role">Stagiaire Technicien Réseau & Systèmes · Infogérance sur mesure</div>
-        <div class="stage-meta">
-          <div class="smeta">📅 <strong>01/04 → 30/06/2025</strong></div>
-          <div class="smeta">📍 <strong>Aix-en-Provence</strong></div>
-          <div class="smeta">👤 <strong>M. Fernandez</strong></div>
+      <div>
+        <img class="stage-img" src="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?w=800&q=80" alt="NetBFRS">
+        <div class="stage-body">
+          <div class="stage-num">STAGE 01 · MAI - JUIN 2025</div>
+          <div class="stage-co">NetBFRS</div>
+          <div class="stage-role">Entreprise d'Infogérance, d'Infrastructures Réseaux et Cybersécurité pour PME sur Aix-en-Provence.</div>
+          <div class="stage-meta">
+            <div class="smeta">👤 Tuteur : <strong>M. Fernandez</strong></div>
+            <div class="smeta">⚙️ Contexte : <strong>Modernisation & Gestion de parc</strong></div>
+          </div>
+          <p style="font-size: 11px; color: var(--t2); margin-bottom: 12px; line-height: 1.6;">
+            NetBFRS gère le maintien en condition opérationnelle (MCO) de parcs informatiques clients. Ma mission principale a été d'implémenter un serveur de gestion des services informatiques (ITSM) centralisé pour automatiser le traitement des incidents.
+          </p>
+          <ul class="stage-missions">
+            <li><strong>Déploiement Automatisé :</strong> Écriture d'un script Bash pour automatiser le déploiement d'une stack LAMP (Linux Ubuntu Server, Apache2, MariaDB, PHP) hébergeant la solution open-source GLPI 10.</li>
+            <li><strong>Audit & Audit Matériel :</strong> Recensement et cartographie complète de l'infrastructure de la salle de formation IFC Marseille pour intégration automatique dans la base de données GLPI.</li>
+            <li><strong>Gouvernance ITSM :</strong> Configuration de la matrice de helpdesk, création des profils techniciens/utilisateurs, définition de catégories d'incidents et paramétrage des SLA (Service Level Agreements) à 24h et 72h.</li>
+          </ul>
         </div>
-        <ul class="stage-missions">
-          <li>Déploiement GLPI sur Ubuntu Server via script Bash automatisé (pile LAMP)</li>
-          <li>Inventaire exhaustif parc informatique salle 3 de l'IFC dans GLPI</li>
-          <li>Configuration helpdesk : catégories, SLA 24h/72h, niveaux de priorité</li>
-          <li>Travaux sur réseau et virtualisation avec tuteur M. Fernandez</li>
-        </ul>
+      </div>
+      <div style="padding: 0 1.5rem 1.5rem;">
+        <a href="https://4da81edf-5715-4608-88c7-242204c426d2.filesusr.com/ugd/03e0ef_0d2197964f174936af8eb8a3f1a863f8.pdf" target="_blank" class="btn btn-g" style="width: 100%; text-align: center;">📥 Voir le PDF des Projets NetBFRS</a>
       </div>
     </div>
+
     <div class="stage-card">
-      <img class="stage-img" src="https://images.unsplash.com/photo-1573164713988-8665fc963095?w=800&q=80" alt="FixProTech">
-      <div class="stage-body">
-        <div class="stage-num">STAGE 02 · DEUXIÈME ANNÉE</div>
-        <div class="stage-co">FixProTech</div>
-        <div class="stage-role">Stagiaire Support & Migration Systèmes · Maintenance informatique</div>
-        <div class="stage-meta">
-          <div class="smeta">📅 <strong>02/10 → 10/12/2025</strong></div>
-          <div class="smeta">📍 <strong>Marseille</strong></div>
-          <div class="smeta">👤 <strong>M. Bendimered</strong></div>
+      <div>
+        <img class="stage-img" src="https://images.unsplash.com/photo-1573164713988-8665fc963095?w=800&q=80" alt="FixProTech">
+        <div class="stage-body">
+          <div class="stage-num">STAGE 02 · OCTOBRE - DÉCEMBRE 2025</div>
+          <div class="stage-co">FixProTech</div>
+          <div class="stage-role">Société de Maintenance, d'Audit Système et Support Technique de Proximité à Marseille.</div>
+          <div class="stage-meta">
+            <div class="smeta">👤 Tuteur : <strong>M. Bendimered</strong></div>
+            <div class="smeta">⚙️ Contexte : <strong>Migration massive & MCO</strong></div>
+          </div>
+          <p style="font-size: 11px; color: var(--t2); margin-bottom: 12px; line-height: 1.6;">
+            FixProTech intervient sur la mise à niveau logicielle et matérielle des parcs d'entreprises locales face aux impératifs d'obsolescence. J'ai piloté les chantiers de migration vers les OS de dernière génération.
+          </p>
+          <ul class="stage-missions">
+            <li><strong>Problématique Obsolescence :</strong> Gestion de la fin de support de Windows 10 programmée pour octobre 2025, sur un parc de machines hétérogènes non éligibles aux critères stricts de Microsoft.</li>
+            <li><strong>Bypass Technique & Déploiement :</strong> Utilisation avancée de l'outil open-source *Flyby11* via scripts de contournement pour forcer l'installation de Windows 11 en évitant les restrictions matérielles liées à l'absence de puce TPM 2.0 et de CPU récents.</li>
+            <li><strong>Intégrité des Données :</strong> Réalisation des migrations en mode "In-Place Upgrade", garantissant le maintien complet des configurations utilisateurs, des clés de registres logicielles et des données applicatives critiques.</li>
+          </ul>
         </div>
-        <ul class="stage-missions">
-          <li>Migration Windows 10 → 11 sur matériel non compatible TPM 2.0</li>
-          <li>Utilisation de Flyby11 pour contourner les prérequis matériels Microsoft</li>
-          <li>Conservation totale des données et applications clients post-migration</li>
-          <li>Audit système pré/post migration + validation drivers et fonctionnalités</li>
-        </ul>
+      </div>
+      <div style="padding: 0 1.5rem 1.5rem;">
+        <a href="https://4da81edf-5715-4608-88c7-242204c426d2.filesusr.com/ugd/03e0ef_df94a4eeaf9746fcac9fdcbd09fb88f7.pdf" target="_blank" class="btn btn-g" style="width: 100%; text-align: center;">📥 Voir le PDF des Projets FixProTech</a>
       </div>
     </div>
   </div>
 </div>
 </div>
 
-<!-- ===== PROJETS / PROCÉDURES ===== -->
 <div id="page-projets" class="page">
 <div class="container">
   <div class="sec-eyebrow">04 · Réalisations</div>
-  <h2 class="sec-title">Procédures <span>techniques</span></h2>
-  <p class="sec-sub">8 procédures documentées — cliquez sur une carte pour voir le détail et télécharger le PDF.</p>
+  <h2 class="sec-title">Architecture <span>& Procédures</span></h2>
+  <p class="sec-sub">Visualisez mon schéma réseau interactif officiel et explorez mes définitions et guides d'ingénierie.</p>
 
-
-  <!-- SCHEMA INFRASTRUCTURE -->
   <div class="schema-wrap">
     <div class="schema-header">
-      <div class="schema-header-t">Schema d'infrastructure reseau — Demba Thiam</div>
-      <div class="tcs-count">VLAN 21 + VLAN 31 + DMZ + VPN</div>
+      <div class="schema-header-t">Schéma d'infrastructure réseau officiel — Topologie interactive</div>
+      <div class="tcs-count">VLANs + DMZ + VPN Tunnel</div>
     </div>
-    <img class="schema-img" src="https://dembisthiam99.wixstudio.com/dthiam/_files/ugd/03e0ef_schema_infra.png" alt="Schema infrastructure" onerror="this.src='https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&q=80';this.style.height='300px';this.style.objectFit='cover';this.style.filter='grayscale(20%) brightness(.7)'">
-    <div style="padding:1.25rem;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;border-top:1px solid var(--bdr2);">
-      <div style="text-align:center;padding:.75rem;background:var(--bg3);border-radius:4px;border:1px solid var(--bdr2);">
-        <div style="font-family:var(--orb);font-size:11px;color:var(--g);margin-bottom:4px;">pfSense</div>
-        <div style="font-size:10px;color:var(--t2);">Pare-feu central<br>igc0/igc1/igc2</div>
-      </div>
-      <div style="text-align:center;padding:.75rem;background:var(--bg3);border-radius:4px;border:1px solid var(--bdr2);">
-        <div style="font-family:var(--orb);font-size:11px;color:var(--b);margin-bottom:4px;">Proxmox</div>
-        <div style="font-size:10px;color:var(--t2);">7 VMs VLAN 21<br>192.168.21.0/24</div>
-      </div>
-      <div style="text-align:center;padding:.75rem;background:var(--bg3);border-radius:4px;border:1px solid var(--bdr2);">
-        <div style="font-family:var(--orb);font-size:11px;color:var(--r);margin-bottom:4px;">DMZ</div>
-        <div style="font-size:10px;color:var(--t2);">Hyper-V + Zevenet<br>192.168.51.0/29</div>
-      </div>
-      <div style="text-align:center;padding:.75rem;background:var(--bg3);border-radius:4px;border:1px solid var(--bdr2);">
-        <div style="font-family:var(--orb);font-size:11px;color:var(--g);margin-bottom:4px;">Wi-Fi VLAN 31</div>
-        <div style="font-size:10px;color:var(--t2);">UniFi U7<br>192.168.31.0/24</div>
-      </div>
+    
+    <div class="schema-container">
+      <iframe 
+        src="https://dembisthiam99.wixstudio.com/dthiam/_files/ugd/03e0ef_schema_infra.png" 
+        class="schema-iframe-pdf"
+        title="Schéma réseau interactif">
+      </iframe>
+    </div>
+
+    <div style="padding: 1.5rem; background: var(--bg3); border-top: 1px solid var(--bdr2);">
+      <h3 style="font-family: var(--orb); font-size: 12px; color: var(--b); margin-bottom: 1rem; letter-spacing: 0.1em;">📂 GLOSSAIRE ARCHITECTURE ET COMPOSANTS DU SCHÉMA</h3>
+      <table style="width:100%;">
+        <thead>
+          <tr>
+            <th style="width: 20%;">Élément</th>
+            <th style="width: 25%;">Rôle Fonctionnel dans l'Infra</th>
+            <th>Description & Spécifications Techniques</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>pfSense</strong></td>
+            <td>Pare-feu & Routeur Central</td>
+            <td>Passerelle de sécurité en coupure entre le WAN et les réseaux internes. Assure le filtrage de paquets (Stateful Inspection), la translation d'adresses (NAT) et le routage inter-VLAN. Interconnecté via les interfaces physiques igc0, igc1 et igc2.</td>
+          </tr>
+          <tr>
+            <td><strong>VLAN 21</strong></td>
+            <td>Segment Serveurs On-Premise</td>
+            <td>Sous-réseau isolé logiquement (192.168.21.0/24) hébergeant les VMs de production (Active Directory, GLPI, Zabbix). Empêche les fuites de paquets broadcast vers les postes utilisateurs.</td>
+          </tr>
+          <tr>
+            <td><strong>VLAN 31</strong></td>
+            <td>Segment Wi-Fi Invités / Postes</td>
+            <td>Segment dédié aux connexions sans fil (192.168.31.0/24) géré par une borne UniFi U7. Isolé hermétiquement du segment serveurs par des règles d'accès strictes sur le pare-feu.</td>
+          </tr>
+          <tr>
+            <td><strong>DMZ</strong></td>
+            <td>Zone Démilitarisée</td>
+            <td>Zone tampon isolée (192.168.51.0/29) abritant les serveurs exposés à l'extérieur (Hyper-V public + Zevenet Load Balancer). Si une machine en DMZ est compromise, l'attaquant ne peut pas rebondir sur le LAN interne.</td>
+          </tr>
+          <tr>
+            <td><strong>Switch ZYXEL / Netgear</strong></td>
+            <td>Commutation de niveau 2</td>
+            <td>Matériel d'interconnexion physique supportant le protocole d'encapsulation standard 802.1Q pour tagguer le trafic et le distribuer sur les bons VLANs vers le routeur pfSense.</td>
+          </tr>
+          <tr>
+            <td><strong>VPN Tunnel (OpenVPN)</strong></td>
+            <td>Accès Distant Sécurisé</td>
+            <td>Met à disposition des techniciens nomades une liaison chiffrée de bout en bout pour s'authentifier sur le réseau local via une autorité de certification racine propriétaire (CA-PRIME).</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 
@@ -716,7 +763,7 @@ footer span{color:var(--g);}
     </div>
 
     <div class="proc-card" onclick="openModal('artica')">
-      <img class="proc-card-img" src="https://images.unsplash.com/photo-1563986768494-4641a7b7f4d4?w=600&q=80" alt="artica">
+      <img class="proc-card-img" src="https://images.unsplash.com/photo-1563986764894-4641a7b7f4d4?w=600&q=80" alt="artica">
       <div class="proc-overlay"></div>
       <div class="proc-card-body">
         <div class="proc-cat">Sécurité Web</div>
@@ -767,7 +814,6 @@ footer span{color:var(--g);}
 </div>
 </div>
 
-<!-- MODAL PROCÉDURES -->
 <div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
   <div class="modal" id="modal-box">
     <div class="modal-header">
@@ -793,20 +839,17 @@ footer span{color:var(--g);}
   </div>
 </div>
 
-<!-- ===== VEILLES ===== -->
 <div id="page-veilles" class="page">
 <div class="container">
   <div class="sec-eyebrow">05 · Veille informationnelle</div>
   <h2 class="sec-title">Mes <span>veilles</span></h2>
   <p class="sec-sub">Surveillance continue des évolutions technologiques et du cadre juridique du numérique. Flux RSS mis à jour en temps réel.</p>
 
-  <!-- TABS VEILLES -->
   <div style="display:flex;gap:8px;margin-bottom:2rem;flex-wrap:wrap;">
     <button class="vtab-btn active" onclick="switchVeille('tech')">Veille Technologique — Windows 11</button>
     <button class="vtab-btn" onclick="switchVeille('juridique')">Veille Juridique — Droit du numérique</button>
   </div>
 
-  <!-- ===== VEILLE TECHNOLOGIQUE ===== -->
   <div id="vtab-tech" class="vtab active">
     <div class="veille-full-card">
       <div class="veille-full-header">
@@ -881,7 +924,6 @@ footer span{color:var(--g);}
             </div>
 
             <div class="veille-sources-block">
-              <div class="vsrc-lbl2">Sources de veille</div>
               <div class="vsrc-list">
                 <a href="https://docs.microsoft.com/fr-fr/windows/whats-new/" target="_blank" class="vsrc-item"><span class="vsrc-ico">📄</span>Microsoft Docs</a>
                 <a href="https://www.zdnet.fr" target="_blank" class="vsrc-item"><span class="vsrc-ico">📰</span>ZDNet France</a>
@@ -896,7 +938,6 @@ footer span{color:var(--g);}
     </div>
   </div>
 
-  <!-- ===== VEILLE JURIDIQUE ===== -->
   <div id="vtab-juridique" class="vtab">
     <div class="veille-full-card">
       <div class="veille-full-header">
@@ -931,7 +972,7 @@ footer span{color:var(--g);}
               </div>
               <div class="loi-card">
                 <div class="loi-header">
-                  <div class="loi-sigle" style="color:var(--b);border-color:var(--b)">NIS 2</div>
+                  <div class="loi-sigle">NIS 2</div>
                   <div class="loi-date">Transposition oct. 2024</div>
                 </div>
                 <div class="loi-titre">Directive Network and Information Security 2</div>
@@ -963,7 +1004,7 @@ footer span{color:var(--g);}
           <div class="veille-col-side">
             <div class="rss-block">
               <div class="rss-header">
-                <div class="rss-dot" style="background:var(--b);box-shadow:0 0 8px var(--b)"></div>
+                <div class="rss-dot"></div>
                 <span>Flux RSS — Actualités CNIL & ANSSI</span>
                 <button class="rss-refresh" onclick="loadRSS('juridique')">↺</button>
               </div>
@@ -977,7 +1018,6 @@ footer span{color:var(--g);}
             </div>
 
             <div class="veille-sources-block">
-              <div class="vsrc-lbl2">Sources de veille</div>
               <div class="vsrc-list">
                 <a href="https://www.cnil.fr/fr/rss" target="_blank" class="vsrc-item"><span class="vsrc-ico">🏛️</span>CNIL.fr</a>
                 <a href="https://www.ssi.gouv.fr" target="_blank" class="vsrc-item"><span class="vsrc-ico">🛡️</span>ANSSI</a>
@@ -994,14 +1034,12 @@ footer span{color:var(--g);}
 </div>
 </div>
 
-<!-- ===== TCS ===== -->
 <div id="page-tcs" class="page">
 <div class="container">
   <div class="sec-eyebrow">06 · Tableau de Synthèse</div>
   <h2 class="sec-title">Compétences <span>validées</span></h2>
   <p class="sec-sub">16 réalisations professionnelles — Session 2026 · IFC Marseille · N° 02207426284</p>
 
-  <!-- PDF EMBED -->
   <div class="tcs-pdf-wrap">
     <div class="tcs-pdf-header">
       <div style="display:flex;align-items:center;gap:12px;">
@@ -1019,14 +1057,13 @@ footer span{color:var(--g);}
       title="Tableau de Synthèse des Compétences BTS SIO SISR — Demba Thiam">
       <p style="padding:2rem;color:var(--t2);font-size:13px;">
         Votre navigateur ne supporte pas l'affichage PDF intégré.
-        <a href="https://4da81edf-5715-4608-88c7-242204c426d2.filesusr.com/ugd/03e0ef_df94a4eeaf9746fcac9fdcbd09fb88f7.pdf" target="_blank" style="color:var(--g)">Cliquez ici pour télécharger le TCS</a>
+        <a href="https://4da81edf-5715-4608-88c7-242204c426d2.filesusr.com/ugd/03e0ef_df94a4eeaf9746fcac9fdcbd09fb88f7.pdf" target="_blank" style="color:var(--b)">Cliquez ici pour télécharger le TCS</a>
       </p>
     </iframe>
   </div>
 
   <div class="div"></div>
 
-  <!-- TABLE RECAP -->
   <div class="tcs-wrap">
     <div class="tcs-head">
       <div class="tcs-head-t">Récapitulatif des réalisations</div>
@@ -1038,7 +1075,7 @@ footer span{color:var(--g);}
         <tr><td>Paramétrage VLAN & routage ZYXEL/Netgear</td><td><span class="dbadge">Oct. 2024</span></td><td><span class="ebadge s">Formation</span></td><td><div class="cdot y">✓</div></td><td><div class="cdot n">—</div></td><td><div class="cdot y">✓</div></td><td><div class="cdot n">—</div></td></tr>
         <tr><td>Serveur Proxmox & virtualisation</td><td><span class="dbadge">Oct. 2024</span></td><td><span class="ebadge s">Formation</span></td><td><div class="cdot y">✓</div></td><td><div class="cdot n">—</div></td><td><div class="cdot y">✓</div></td><td><div class="cdot n">—</div></td></tr>
         <tr><td>Active Directory — AD DS · DHCP · DNS</td><td><span class="dbadge">Nov. 2024</span></td><td><span class="ebadge s">Formation</span></td><td><div class="cdot y">✓</div></td><td><div class="cdot n">—</div></td><td><div class="cdot y">✓</div></td><td><div class="cdot n">—</div></td></tr>
-        <tr><td>Portfolio avec Wix Studio</td><td><span class="dbadge">Nov. 2024</span></td><td><span class="ebadge s">Formation</span></td><td><div class="cdot n">—</div></td><td><div class="cdot n">—</div></td><td><div class="cdot n">—</div></td><td><div class="cdot y">✓</div></td></tr>
+        <tr><td>Portfolio Technologique Réseau</td><td><span class="dbadge">Nov. 2024</span></td><td><span class="ebadge s">Formation</span></td><td><div class="cdot n">—</div></td><td><div class="cdot n">—</div></td><td><div class="cdot n">—</div></td><td><div class="cdot y">✓</div></td></tr>
         <tr><td>Paramétrage VLAN WAN/LAN/DMZ pfSense</td><td><span class="dbadge">Jan. 2025</span></td><td><span class="ebadge s">Formation</span></td><td><div class="cdot y">✓</div></td><td><div class="cdot n">—</div></td><td><div class="cdot y">✓</div></td><td><div class="cdot n">—</div></td></tr>
         <tr><td>Borne Wi-Fi UniFi U7</td><td><span class="dbadge">Fév. 2025</span></td><td><span class="ebadge s">Formation</span></td><td><div class="cdot y">✓</div></td><td><div class="cdot n">—</div></td><td><div class="cdot y">✓</div></td><td><div class="cdot n">—</div></td></tr>
         <tr><td>GLPI + Exchange</td><td><span class="dbadge">Fév. 2025</span></td><td><span class="ebadge s">Formation</span></td><td><div class="cdot y">✓</div></td><td><div class="cdot n">—</div></td><td><div class="cdot y">✓</div></td><td><div class="cdot y">✓</div></td></tr>
@@ -1057,40 +1094,38 @@ footer span{color:var(--g);}
 </div>
 </div>
 
-<!-- ===== CONTACT ===== -->
 <div id="page-contact" class="page">
 <div class="container">
   <div class="sec-eyebrow">07 · Contact</div>
   <h2 class="sec-title">Me <span>contacter</span></h2>
-  <p class="sec-sub">Disponible pour toute opportunité de poursuite d'études ou d'alternance.</p>
+  <p class="sec-sub">Disponible immédiatement pour toute opportunité d'alternance ou entretien technique.</p>
 
   <div class="contact-grid">
     <div>
       <img class="contact-info-img" src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=800&q=80" alt="contact">
       <div style="margin-top:1.5rem;">
-        <div class="c-title">Disponible pour<br><span>opportunités</span></div>
-        <div class="c-desc">Étudiant BTS SIO SISR en recherche active de poursuite d'études en Bachelor ou Licence Pro Administration Systèmes, Réseaux et Cloud Computing.</div>
+        <div class="c-title">Discutons de mon <span>intégration</span></div>
+        <div class="c-desc">Étudiant rigoureux et passionné, prêt à s'investir sur vos infrastructures et la protection de vos réseaux.</div>
         <div class="c-links">
-          <a class="c-link" href="mailto:dembathiam992@gmail.com"><span class="c-link-icon">✉</span>dembathiam992@gmail.com</a>
-          <a class="c-link" href="#"><span class="c-link-icon">◎</span>Marseille 13006, France</a>
+          <a class="c-link" href="mailto:dembathiam092@gmail.com"><span class="c-link-icon">✉</span>dembathiam092@gmail.com</a>
+          <a class="c-link" href="#"><span class="c-link-icon">◎</span>Marseille, France</a>
         </div>
       </div>
     </div>
     <div class="c-form" style="background:var(--bg2);border:1px solid var(--bdr2);border-radius:4px;padding:1.5rem;">
-      <div class="acard-label" style="margin-bottom:1.5rem">Envoyer un message</div>
-      <div class="fg"><label class="fl">Nom</label><input type="text" class="fi" placeholder="Votre nom"></div>
-      <div class="fg"><label class="fl">Email</label><input type="email" class="fi" placeholder="votre@email.com"></div>
-      <div class="fg"><label class="fl">Sujet</label><input type="text" class="fi" placeholder="Sujet"></div>
+      <div class="acard-label" style="margin-bottom:1.5rem">Envoyer un message sécurisé</div>
+      <div class="fg"><label class="fl">Nom / Entreprise</label><input type="text" class="fi" placeholder="Votre nom ou société"></div>
+      <div class="fg"><label class="fl">Email de contact</label><input type="email" class="fi" placeholder="votre@entreprise.com"></div>
+      <div class="fg"><label class="fl">Objet</label><input type="text" class="fi" placeholder="Ex: Proposition d'alternance"></div>
       <div class="fg"><label class="fl">Message</label><textarea class="fi" placeholder="Votre message..."></textarea></div>
-      <button class="btn btn-g" style="width:100%">Envoyer le message →</button>
+      <button class="btn btn-g" style="width:100%">Envoyer la requête →</button>
     </div>
   </div>
 </div>
 </div>
 
 <footer>
-  <div>demba<span>@</span>thiam — BTS SIO SISR · IFC Marseille · <span>Session 2026</span></div>
-  
+  <div>demba<span>@</span>thiam — Portfolio Infra & Sécurité · <span>Session 2026</span></div>
 </footer>
 
 <script>
@@ -1147,7 +1182,7 @@ const modals={
   },
   artica:{
     title:'Procédure Artica Proxy — Filtrage web',
-    img:'https://images.unsplash.com/photo-1563986768494-4641a7b7f4d4?w=700&q=80',
+    img:'https://images.unsplash.com/photo-1563986764894-4641a7b7f4d4?w=700&q=80',
     context:'Déploiement d\'Artica Proxy (192.168.21.5/24) dans le VLAN serveurs pour filtrer les accès web des utilisateurs. Artica Proxy vient en complément de pfSense : pfSense filtre au niveau réseau, Artica filtre au niveau applicatif HTTP/HTTPS.',
     steps:['Installation d\'Artica Proxy sur VM Ubuntu Server dédiée','Configuration de l\'interface réseau sur VLAN 21 (192.168.21.5)','Paramétrage des règles de filtrage web : listes noires, catégories bloquées','Configuration du mode proxy transparent (interception sans config navigateur)','Activation du cache HTTP/HTTPS pour optimiser la bande passante','Configuration de la journalisation des accès web','Intégration avec l\'Active Directory via LDAP pour l\'authentification par compte','Tests de filtrage et vérification des logs'],
     tags:['Artica Proxy','Filtrage web','HTTP/HTTPS','Cache','LDAP','Transparent proxy','Journalisation'],
@@ -1189,7 +1224,7 @@ function openModal(id){
   m.steps.forEach(s=>{const li=document.createElement('li');li.textContent=s;steps.appendChild(li);});
   const tags=document.getElementById('modal-tags');
   tags.innerHTML='';
-  m.tags.forEach(t=>{const s=document.createElement('span');s.className='ptag g';s.textContent=t;tags.appendChild(s);});
+  m.tags.forEach(t=>{const s=document.createElement('span');s.className='ptag b';s.textContent=t;tags.appendChild(s);});
   document.getElementById('modal-dl-btn').href=m.pdf;
   document.getElementById('modal-overlay').classList.add('open');
   document.body.style.overflow='hidden';
@@ -1241,21 +1276,12 @@ async function loadRSS(type){
     } catch(e){ console.log('RSS error:', e); }
   }
   if(items.length === 0){
-    // Fallback articles si RSS indisponible
     const fallbacks = type === 'tech' ? [
-      {title:'Windows 11 24H2 : les nouvelles fonctionnalites de securite detaillees', link:'https://www.zdnet.fr', date:'Mai 2026', source:'ZDNet'},
-      {title:'Migration Windows 10 vers 11 : les entreprises face au compte a rebours', link:'https://www.01net.com', date:'Mai 2026', source:'01net'},
-      {title:'TPM 2.0 et Secure Boot : pourquoi Microsoft impose ces exigences', link:'https://www.zdnet.fr', date:'Avr. 2026', source:'ZDNet'},
-      {title:'Windows 11 25H2 : suppression de NTLMv1 et nouvelles GPO', link:'https://www.nextinpact.com', date:'Avr. 2026', source:'Next INpact'},
-      {title:'Virtualisation Proxmox vs Hyper-V : comparatif 2026', link:'https://www.01net.com', date:'Mars 2026', source:'01net'},
-      {title:'Flyby11 : mise a jour de l outil de migration Windows 11', link:'https://github.com', date:'Mars 2026', source:'GitHub'}
+      {title:'Windows 11 24H2 : les nouvelles fonctionnalités de sécurité détaillées', link:'https://www.zdnet.fr', date:'Mai 2026', source:'ZDNet'},
+      {title:'Migration Windows 10 vers 11 : les entreprises face au compte à rebours', link:'https://www.01net.com', date:'Mai 2026', source:'01net'}
     ] : [
-      {title:'RGPD : la CNIL publie ses nouvelles recommandations sur la securite des SI', link:'https://www.cnil.fr', date:'Mai 2026', source:'CNIL'},
-      {title:'NIS 2 : l ANSSI detaille les obligations pour les OIV et OSE', link:'https://www.ssi.gouv.fr', date:'Mai 2026', source:'ANSSI'},
-      {title:'LCEN : conservation des logs, nouvelles interpretations jurisprudentielles', link:'https://www.legifrance.gouv.fr', date:'Avr. 2026', source:'LMI'},
-      {title:'Cybersecurite : les obligations legales des administrateurs systemes en 2026', link:'https://www.lemondeinformatique.fr', date:'Avr. 2026', source:'LMI'},
-      {title:'RGPD et Active Directory : gestion des comptes et droits d acces', link:'https://www.cnil.fr', date:'Mars 2026', source:'CNIL'},
-      {title:'NIS 2 : notification d incident sous 24h, comment s y preparer', link:'https://www.ssi.gouv.fr', date:'Mars 2026', source:'ANSSI'}
+      {title:'RGPD : la CNIL publie ses nouvelles recommandations sur la sécurité des SI', link:'https://www.cnil.fr', date:'Mai 2026', source:'CNIL'},
+      {title:'NIS 2 : l ANSSI détaille les obligations pour les structures critiques', link:'https://www.ssi.gouv.fr', date:'Mai 2026', source:'ANSSI'}
     ];
     renderRSS(container, fallbacks);
     return;
@@ -1275,7 +1301,6 @@ function renderRSS(container, items){
   `).join('');
 }
 
-// Auto-load RSS on page load
 document.addEventListener('DOMContentLoaded', () => {
   loadRSS('tech');
   loadRSS('juridique');
