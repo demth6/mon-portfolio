@@ -293,7 +293,7 @@ footer span{color:var(--b);}
 .schema-container{position:relative;width:100%;height:600px;background:#06090e;overflow:hidden;}
 .schema-iframe-pdf{width:100%;height:100%;border:none;}
 
-/* VEILLES NEW STYLES */
+/* ... REST OF VEILLES STYLES AND OTHERS REMAIN SYSTEMICALLY UNTOUCHED ... */
 .vtab-btn{font-family:var(--mono);font-size:11px;padding:9px 20px;letter-spacing:.1em;text-transform:uppercase;border-radius:2px;border:1px solid var(--bdr);background:var(--bg2);color:var(--t2);cursor:pointer;transition:all .2s;}
 .vtab-btn.active{background:var(--b);color:var(--bg);border-color:var(--b);font-weight:700;}
 .vtab{display:none;}.vtab.active{display:block;}
@@ -654,23 +654,16 @@ footer span{color:var(--b);}
 
   <div class="schema-wrap">
     <div class="schema-header">
-      <div class="schema-header-t">Schéma d'infrastructure réseau officiel — Topologie interactive</div>
-      <div class="tcs-count">VLANs + DMZ + VPN Tunnel</div>
+      <div class="schema-header-t">Schéma d'infrastructure réseau officiel — Topologie de Production</div>
+      <div class="tcs-count">VLAN 21 + VLAN 31 + DMZ + VPN</div>
     </div>
     
-    <div class="schema-container">
-      <div class="schema-wrap">
-        <div class="schema-header">
-          <div class="schema-header-t">Schéma d'infrastructure réseau officiel — Topologie de Production</div>
-          <div class="tcs-count">VLAN 21 + VLAN 31 + DMZ + VPN</div>
-        </div>
-    
-        <div style="background: #06090e; padding: 1rem; text-align: center; border-bottom: 1px solid var(--bdr2);">
-           <a href="schema_infra.png" target="_blank" title="Cliquez pour ouvrir le schéma en haute définition">
-            <img class="schema-img" src="schema_infra.png" alt="Schéma infrastructure Demba Thiam" style="max-width: 100%; height: auto; display: inline-block; filter: none; border-radius: 2px;">
-          </a>
-          <p style="font-size: 10px; color: var(--t3); margin-top: 8px;">💡 Cliquez sur l'image pour inspecter la topologie en plein écran.</p>
-      </div>
+    <div style="background: #06090e; padding: 1rem; text-align: center; border-bottom: 1px solid var(--bdr2);">
+      <a href="schema_infra.png" target="_blank" title="Cliquez pour ouvrir le schéma en haute définition">
+        <img class="schema-img" src="schema_infra.png" alt="Schéma infrastructure Demba Thiam" style="max-width: 100%; height: auto; display: inline-block; filter: none; border-radius: 2px;">
+      </a>
+      <p style="font-size: 10px; color: var(--t3); margin-top: 8px;">💡 Cliquez sur l'image pour inspecter la topologie en plein écran.</p>
+    </div>
 
     <div style="padding: 1.5rem; background: var(--bg3); border-top: 1px solid var(--bdr2);">
       <h3 style="font-family: var(--orb); font-size: 12px; color: var(--b); margin-bottom: 1rem; letter-spacing: 0.1em;">📂 GLOSSAIRE ARCHITECTURE ET COMPOSANTS DU SCHÉMA</h3>
@@ -678,40 +671,40 @@ footer span{color:var(--b);}
         <thead>
           <tr>
             <th style="width: 20%;">Élément</th>
-            <th style="width: 25%;">Rôle Fonctionnel dans l'Infra</th>
+            <th style="width: 25%;">Rôle & Alignement IP</th>
             <th>Description & Spécifications Techniques</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><strong>pfSense</strong></td>
-            <td>Pare-feu & Routeur Central</td>
-            <td>Passerelle de sécurité en coupure entre le WAN et les réseaux internes. Assure le filtrage de paquets (Stateful Inspection), la translation d'adresses (NAT) et le routage inter-VLAN. Interconnecté via les interfaces physiques igc0, igc1 et igc2.</td>
+            <td><strong>PFSENSE</strong></td>
+            <td>Pare-feu d'extrémité<br><span style="color: var(--r);">IP: 10.1.1.1/29</span></td>
+            <td>Passerelle de sécurité en coupure. Gère les flux inter-zones via ses interfaces physiques de filtrage d'état : <strong style="color: var(--b);">RE0</strong> (Lien WAN), <strong style="color: var(--b);">RE1</strong> (Trunk vers switch Netgear) et <strong style="color: var(--b);">RE2</strong> (Lien DMZ en `192.168.51.1/29`).</td>
           </tr>
           <tr>
             <td><strong>VLAN 21</strong></td>
-            <td>Segment Serveurs On-Premise</td>
-            <td>Sous-réseau isolé logiquement (192.168.21.0/24) hébergeant les VMs de production (Active Directory, GLPI, Zabbix). Empêche les fuites de paquets broadcast vers les postes utilisateurs.</td>
+            <td>Segment Serveurs On-Premise<br><span style="color: var(--b);">LAN: 192.168.21.0/24</span></td>
+            <td>Sous-réseau virtuel isolé sur l'hyperviseur **Proxmox VE**. Il cloisonne les couches applicatives d'infrastructure critiques (AD DS redondés, GLPI, Supervision Zabbix, Proxy Artica, Téléphonie XiVO).</td>
           </tr>
           <tr>
             <td><strong>VLAN 31</strong></td>
-            <td>Segment Wi-Fi Invités / Postes</td>
-            <td>Segment dédié aux connexions sans fil (192.168.31.0/24) géré par une borne UniFi U7. Isolé hermétiquement du segment serveurs par des règles d'accès strictes sur le pare-feu.</td>
+            <td>Segment Mobiles & Wi-Fi<br><span style="color: var(--b);">LAN: 192.168.31.0/24</span></td>
+            <td>Segment d'isolement Wi-Fi pour smartphones et invités géré par une **Borne UniFi AP U7** (passerelle configurée sur l'adresse dédiée `192.168.31.1/24`).</td>
           </tr>
           <tr>
-            <td><strong>DMZ</strong></td>
-            <td>Zone Démilitarisée</td>
-            <td>Zone tampon isolée (192.168.51.0/29) abritant les serveurs exposés à l'extérieur (Hyper-V public + Zevenet Load Balancer). Si une machine en DMZ est compromise, l'attaquant ne peut pas rebondir sur le LAN interne.</td>
+            <td><strong>DMZ (Zone Verte)</strong></td>
+            <td>Zone Démilitarisée Web<br><span style="color: var(--g);">Réseau: 192.168.51.0/29</span></td>
+            <td>Zone étanche protégeant le cœur de réseau. Propulse via un hyperviseur **Hyper-V** (.2) deux serveurs applicatifs web distribués en charge et haute disponibilité par le répartiteur virtuel **Zevenet** (.5).</td>
           </tr>
           <tr>
-            <td><strong>Switch ZYXEL / Netgear</strong></td>
-            <td>Commutation de niveau 2</td>
-            <td>Matériel d'interconnexion physique supportant le protocole d'encapsulation standard 802.1Q pour tagguer le trafic et le distribuer sur les bons VLANs vers le routeur pfSense.</td>
+            <td><strong>TUNNEL VPN</strong></td>
+            <td>Accès Nomade Sécurisé<br><span style="color: var(--r);">Réseau: 172.2.1.0/24</span></td>
+            <td>Réseau logique point-à-point (OpenVPN) permettant à un technicien distant de s'authentifier de manière étanche afin de manager le système d'information.</td>
           </tr>
           <tr>
-            <td><strong>VPN Tunnel (OpenVPN)</strong></td>
-            <td>Accès Distant Sécurisé</td>
-            <td>Met à disposition des techniciens nomades une liaison chiffrée de bout en bout pour s'authentifier sur le réseau local via une autorité de certification racine propriétaire (CA-PRIME).</td>
+            <td><strong>SWITCH NETGEAR</strong></td>
+            <td>Commutation Cœur LAN<br><span style="color: var(--b);">IP: 10.1.1.2/29</span></td>
+            <td>Matériel réseau administrable de niveau 2 configuré en **Trunking 802.1Q** pour acheminer les trames tagguées de l'hyperviseur Proxmox et de la console Administrateur (.3) vers pfSense.</td>
           </tr>
         </tbody>
       </table>
@@ -719,7 +712,6 @@ footer span{color:var(--b);}
   </div>
 
   <div class="proc-grid">
-
     <div class="proc-card" onclick="openModal('vlan')">
       <img class="proc-card-img" src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80" alt="vlan">
       <div class="proc-overlay"></div>
@@ -815,7 +807,6 @@ footer span{color:var(--b);}
         <div class="proc-btn">↗ Voir la procédure</div>
       </div>
     </div>
-
   </div>
 </div>
 </div>
