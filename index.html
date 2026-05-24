@@ -1107,11 +1107,20 @@ footer span{color:var(--neon);}
     </div>
     <div class="c-form">
       <div style="font-size:10px;color:var(--neon);letter-spacing:.2em;text-transform:uppercase;margin-bottom:1.5rem;">Envoyer un message</div>
-      <div class="fg"><label class="fl">Nom</label><input type="text" class="fi" placeholder="Votre nom"></div>
-      <div class="fg"><label class="fl">Email</label><input type="email" class="fi" placeholder="votre@email.com"></div>
-      <div class="fg"><label class="fl">Sujet</label><input type="text" class="fi" placeholder="Opportunite d'alternance..."></div>
-      <div class="fg"><label class="fl">Message</label><textarea class="fi" placeholder="Votre message..."></textarea></div>
-      <button class="btn btn-primary" style="width:100%;">Envoyer le message</button>
+      <div id="form-success" style="display:none;background:rgba(0,229,160,.08);border:1px solid rgba(0,229,160,.25);border-radius:4px;padding:1rem;font-size:12px;color:var(--success);margin-bottom:1rem;text-align:center;">
+        ✅ Message envoye ! Demba vous repondra rapidement.
+      </div>
+      <div id="form-error" style="display:none;background:rgba(255,64,96,.07);border:1px solid rgba(255,64,96,.2);border-radius:4px;padding:1rem;font-size:12px;color:var(--danger);margin-bottom:1rem;text-align:center;">
+        ❌ Erreur lors de l'envoi. Essayez directement par email.
+      </div>
+      <div class="fg"><label class="fl">Nom *</label><input type="text" id="f-nom" class="fi" placeholder="Votre nom" required></div>
+      <div class="fg"><label class="fl">Email *</label><input type="email" id="f-email" class="fi" placeholder="votre@email.com" required></div>
+      <div class="fg"><label class="fl">Sujet</label><input type="text" id="f-sujet" class="fi" placeholder="Opportunite d'alternance..."></div>
+      <div class="fg"><label class="fl">Message *</label><textarea id="f-message" class="fi" placeholder="Votre message..." required></textarea></div>
+      <button class="btn btn-primary" id="f-btn" onclick="sendForm()" style="width:100%;">Envoyer le message</button>
+      <div style="font-size:10px;color:var(--t3);margin-top:.75rem;text-align:center;letter-spacing:.04em;">
+        Ou ecrivez directement a <a href="mailto:dembathiam092@gmail.com" style="color:var(--neon);">dembathiam092@gmail.com</a>
+      </div>
     </div>
   </div>
 </div>
@@ -1273,6 +1282,57 @@ function renderRSS(c,its){
 
 // Init handled by CSS - nothing needed here
 
+
+
+// CONTACT FORM - Formspree
+async function sendForm(){
+  var nom = document.getElementById('f-nom').value.trim();
+  var email = document.getElementById('f-email').value.trim();
+  var sujet = document.getElementById('f-sujet').value.trim();
+  var message = document.getElementById('f-message').value.trim();
+  var btn = document.getElementById('f-btn');
+  var success = document.getElementById('form-success');
+  var error = document.getElementById('form-error');
+
+  if(!nom || !email || !message){
+    alert('Merci de remplir les champs obligatoires (Nom, Email, Message).');
+    return;
+  }
+
+  btn.textContent = 'Envoi en cours...';
+  btn.disabled = true;
+  success.style.display = 'none';
+  error.style.display = 'none';
+
+  try {
+    var response = await fetch('https://formspree.io/f/xnjrbzve', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+      body: JSON.stringify({
+        nom: nom,
+        email: email,
+        sujet: sujet || 'Sans sujet',
+        message: message
+      })
+    });
+
+    if(response.ok){
+      success.style.display = 'block';
+      document.getElementById('f-nom').value = '';
+      document.getElementById('f-email').value = '';
+      document.getElementById('f-sujet').value = '';
+      document.getElementById('f-message').value = '';
+      btn.textContent = 'Message envoye !';
+      setTimeout(function(){ btn.textContent = 'Envoyer le message'; btn.disabled = false; }, 3000);
+    } else {
+      throw new Error('Erreur serveur');
+    }
+  } catch(e) {
+    error.style.display = 'block';
+    btn.textContent = 'Envoyer le message';
+    btn.disabled = false;
+  }
+}
 
 // HAMBURGER MENU
 function toggleMenu(){
